@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ValerieFH/Cnidiria-BE.git"
+    "url": "git+https://github.com/RommelGouala/zeaaker_BK.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ValerieFH/Cnidiria-BE/issues"
+    "url": "https://github.com/RommelGouala/zeaaker_BK/issues"
   },
-  "homepage": "https://github.com/ValerieFH/Cnidiria-BE#readme",
+  "homepage": "https://github.com/RommelGouala/zeaaker_BK#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
