@@ -11,10 +11,24 @@ const app = express()
 //middleware
 app.use(express.json())
 app.use(cors({
-    origin: 'https://zeaker.netlify.app',
-    methods: ['POST','PUT','DELETE','GET','PATCH'],
-    allowedHeaders: ['Accept','Content-Type']
-  }))
+  origin: [
+    'https://zeaker.netlify.app',
+  ],
+  methods: ['POST','PUT','DELETE','GET','PATCH'],
+  allowedHeaders: ['Accept','Content-Type'],
+  exposedHeaders: ['Content-Length'],
+  credentials: true,
+  optionsSuccessStatus: 204,
+  preflightContinue: true,
+  maxAge: 86400,
+  preflight: true,
+  optionsSuccessStatus: 204,
+  optionsFailureStatus: 404,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  origin: true,
+  allowedHeaders: true
+}))
+
 
 //routes
 app.use('/index', mainRoutes)
