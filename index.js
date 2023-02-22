@@ -11,7 +11,7 @@ const app = express()
 //middleware
 app.use(express.json())
 app.use(cors({
-  origin: 'https://zeaker.netlify.app/',
+  origin: 'https://zeaker.netlify.app',
   methods: ['POST','PUT','DELETE','GET','PATCH'],
   allowedHeaders: ['Accept','Content-Type'],
 }))
