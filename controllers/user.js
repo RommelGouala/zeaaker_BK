@@ -63,42 +63,36 @@ async function deleteUser(req, res){
     }
 }
 
-async function loginUser(req, res){
+async function loginUser(req, res) {
     try {
-        console.log(req.body)
-        const name = req.body.name
-        console.log(name)
-        const user = await User.findOne({ name: name })
-        console.log(user)
-        let result = await bcrypt.compare(req.body.password, user.password)
-        // const tokenResult = await jwt.decode(process.env.JWT_SECRET, req.headers.authorization) 
-
-        if (result){
-            const payload = {
-                name
-            }
-    
-            const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' })
-
-            // res.json(token)
-
-            res.json({
-                "id": user._id,
-                "token": token
-            })
-    
-            // res.status(201).json({ 'message': 'user successfully logged in'})
-            
-        } else {
-            res.send("HAX")
-        }
+      console.log(req.body)
+      const name = req.body.name
+      console.log(name)
+      const user = await User.findOne({ name: name })
+      console.log(user)
+      if (!user) {
+        return res.status(401).json({ message: "User doesn't exist" })
+      }
+      let result = await bcrypt.compare(req.body.password, user.password)
+      const payload = {
+        name
+      }
+      const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' })
+  
+      if (result) {
+        res.json({
+          "id": user._id,
+          "token": token
+        })
+      } else {
+        res.send("HAX")
+      }
     } catch (error) {
-        console.log(error)
-        
-        // res.status(500).json({'message': 'error checking password'})
-
+      console.log(error)
+      res.status(500).json({ 'message': 'error checking password' })
     }
-}
+  }
+  
 
 async function updateUser(req, res){
     try {
