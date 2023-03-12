@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 function validateJWT(req, res, next) {
     const authHeader = req.headers['authorization']
 
+
     if (authHeader) {
         try {
             const token = authHeader
