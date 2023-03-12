@@ -38,19 +38,16 @@ async function addUser(req, res){
 
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' })
 
-        // res.json(token)
-
         res.json({
             "id": user._id,
             "token": token
         })
-
-        // res.status(201).json({ 'message': 'user successfully created'})
     } catch (error) {
         console.log(error)
-        // res.status(500).json({'message': 'error adding user'})
+        res.status(500).json({'message': 'error adding user'})
     }
 }
+
 
 async function deleteUser(req, res){
     try {
