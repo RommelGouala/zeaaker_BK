@@ -13,7 +13,9 @@ app.use(express.json())
 app.use(cors({
   origin: ['https://zeaker.netlify.app','http://localhost:3000'],
   methods: ['POST','PUT','DELETE','GET','PATCH'],
-  allowedHeaders: ['Accept','Content-Type','authorization'],
+  credentials:true,
+  optionSuccessStatus:200,
+  allowedHeaders: ['Accept','Content-Type','authorization','access-control-allow-origin'],
   preflightContinue: true
 }))
 
